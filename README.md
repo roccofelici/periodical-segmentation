@@ -8,12 +8,14 @@ Links:
  
 TODO:  
 - git for models and images: Git LFS  
-FIRST PART:  
+  
+TODO - FIRST PART:  
 - "stop images" > do not consider the library mark
 - tell the app to export single .jpg images from the .pdf file downloaded from the library website
 - tell the app to also calculate the space (percentage) occupied by images within each page
 - correct the app and verify that the app correcly annotates images (review problem found with the number of bounding boxes)  
-SECOND PART:  
+  
+TODO - SECOND PART:  
 - AFTER THAT the first part is correctly working, tell the app to put the noted images (bounding boxes dimension, position, numeber, percentage) in a Cartesian plane, where: x-axis = n. images on the page; y-axis = space % occupied by images
 - reflect on other possible parameters to be considered: ex. data of publication (year and/or month), image position on the page
 - do one different cartesian plane for each issue/year of the periodical (for comparing them)?  
