@@ -7,17 +7,17 @@ Links:
 - [OD sharepoint](https://usi365-my.sharepoint.com/personal/pizzam_usi_ch/_layouts/15/onedrive.aspx?CT=1764095526506&OR=OWA%2DNT%2DMail&CID=61e0ce3a%2D57fd%2D180b%2D9963%2D0092f13a5648&e=5%3A2f7d7c388f494d83adff3c7d38efb360&sharingv2=true&fromShare=true&at=9&clickParams=eyJYLUFwcE5hbWUiOiJNaWNyb3NvZnQgT3V0bG9vayBXZWIgQXBwIiwiWC1BcHBWZXJzaW9uIjoiMjAyNTExMTQwMDEuMTkiLCJPUyI6IkxpbnV4IHVuZGVmaW5lZCJ9&cidOR=Client&id=%2Fpersonal%2Fpizzam%5Fusi%5Fch%2FDocuments%2FDH%2FAPP%20ROCCO%20per%20dimensioni&FolderCTID=0x012000C74763D84F24FF449C0725411796B65E&view=0)
  
 TODO:  
-- git for models and images: Git LFS
+- git for models and images: Git LFS  
 FIRST PART:  
 - "stop images" > do not consider the library mark
 - tell the app to export single .jpg images from the .pdf file downloaded from the library website
 - tell the app to also calculate the space (percentage) occupied by images within each page
-- correct the app and verify that the app correcly annotates images (review problem found with the number of bounding boxes)
+- correct the app and verify that the app correcly annotates images (review problem found with the number of bounding boxes)  
 SECOND PART:  
 - AFTER THAT the first part is correctly working, tell the app to put the noted images (bounding boxes dimension, position, numeber, percentage) in a Cartesian plane, where: x-axis = n. images on the page; y-axis = space % occupied by images
 - reflect on other possible parameters to be considered: ex. data of publication (year and/or month), image position on the page
-- do one different cartesian plane for each issue/year of the periodical (for comparing them)?
+- do one different cartesian plane for each issue/year of the periodical (for comparing them)?  
   
-OTHER (MAYBE) USEFUL MODELS
+OTHER (MAYBE) USEFUL MODELS  
 - test [SAM](https://github.com/facebookresearch/sam3)
 
