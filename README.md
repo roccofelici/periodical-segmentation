@@ -15,5 +15,6 @@ TODO:
   
 - AFTER THAT the first part is correctly working, tell the app to put the noted images (bounding boxes dimension, position, numeber, percentage) in a Cartesian plane, where: x-axis = n. images on the page; y-axis = space % occupied by images
 - reflect on other possible parameters to be considered: ex. data of publication (year and/or month), image position on the page
-- do one different cartesian plane for each issue/year of the periodical (for comparing them)? 
+- do one different cartesian plane for each issue/year of the periodical (for comparing them)?
+- test [SAM](https://github.com/facebookresearch/sam3)
 
