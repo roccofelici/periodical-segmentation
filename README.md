@@ -8,6 +8,7 @@ Links:
  
 TODO:  
 - git for models and images: Git LFS  
+- marta lancia i test
   
 TODO - FIRST PART:  
 - "stop images" > do not consider the library mark
