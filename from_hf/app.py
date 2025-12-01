@@ -1,22 +1,20 @@
+#!/usr/bin/env python3
+import gradio as gr
+import requests
 import torch
 import os
-import json
-import cv2
-# import sys
+from tqdm import tqdm
 # import wandb
-# import requests
-# import gradio as gr
-import numpy as np
-# import pandas as pd
-import matplotlib.pyplot as plt
-# from tqdm import tqdm
 from ultralytics import YOLO
-from skimage import img_as_bool
+import cv2
+import numpy as np
+import pandas as pd
 from skimage.transform import resize
+from skimage import img_as_bool
 from skimage.morphology import convex_hull_image
+import json
 
 # wandb.init(mode='disabled')
-# np.set_printoptions(threshold=sys.maxsize) # avoid truncation of array display
 
 def tableConvexHull(img, masks):
     mask=np.zeros(masks[0].shape,dtype="bool")
@@ -84,6 +82,7 @@ def extract_mask(img, masks, boxes, clss, cls):
     mask = mask_arr
     return mask
 
+
 def get_masks(img, model, img_model, flags, configs):
     response = {
         'status': 1
@@ -91,9 +90,9 @@ def get_masks(img, model, img_model, flags, configs):
     ans_masks = []
     img2 = img
     
-    # getting paragraph and text masks
+    
+#     ***** Getting paragraph and text masks
     res = get_predictions(model, img2, configs['paratext'])
-
     if res['status']==-1:
         response['status'] = -1
         return response
@@ -101,13 +100,13 @@ def get_masks(img, model, img_model, flags, configs):
         for i in range(2): ans_masks.append(empty_mask(img))
     else:
         masks, boxes = res['masks'], res['boxes']
-
         clss = boxes[:, 5]
         for cls in range(2):
             mask = extract_mask(img, masks, boxes, clss, cls)
             ans_masks.append(mask)
-                    
-    # getting image and table masks
+            
+            
+#     ***** Getting image and table masks
     res2 = get_predictions(model, img2, configs['imgtab'])
     if res2['status']==-1:
         response['status'] = -1
@@ -116,11 +115,6 @@ def get_masks(img, model, img_model, flags, configs):
         for i in range(2): ans_masks.append(empty_mask(img))
     else:
         masks, boxes = res2['masks'], res2['boxes']
-        
-        # save images bounding boxes
-        global bounding_boxes  
-        bounding_boxes = boxes 
-
         clss = boxes[:, 5]
         
         if cls_exists(clss, 2):
@@ -152,8 +146,7 @@ def get_masks(img, model, img_model, flags, configs):
     return response
 
 def overlay(image, mask, color, alpha, resize=None):
-    """
-    Combines image and its segmentation mask into a single image.
+    """Combines image and its segmentation mask into a single image.
     https://www.kaggle.com/code/purplejester/showing-samples-with-segmentation-mask-overlay
 
     Params:
@@ -166,6 +159,7 @@ def overlay(image, mask, color, alpha, resize=None):
 
     Returns:
         image_combined: The combined image. np.ndarray
+
     """
     color = color[::-1]
     colored_mask = np.expand_dims(mask, 0).repeat(3, axis=0)
@@ -181,19 +175,14 @@ def overlay(image, mask, color, alpha, resize=None):
 
     return image_combined
 
-model_path = 'models'
+# TODO: schiaffare dentro funzione babbo
+
+model_path = '/home/rocco/dev/dh/periodical-segmentation/from_hf/models'
 general_model_name = 'e50_aug.pt'
 image_model_name = 'e100_img.pt'
 
 general_model = YOLO(os.path.join(model_path, general_model_name))
 image_model = YOLO(os.path.join(model_path, image_model_name))
-
-image_path = 'examples'
-sample_name = ['0040da34-25c8-4a5a-a6aa-36733ea3b8eb.png',
-               '0050a8ee-382b-447e-9c5b-8506d9507bef.png', 
-               '0064d3e2-3ba2-4332-a28f-3a165f2b84b1.png']
-
-sample_path = [os.path.join(image_path, sample) for sample in sample_name]
 
 flags = {
     'hist': False,
@@ -222,82 +211,56 @@ configs['image'] = {
 
 def evaluate(img_path, model=general_model, img_model=image_model,\
           configs=configs, flags=flags):
-
-    img = cv2.imread(img_path) # read image
-    res = get_masks(img, general_model, image_model, flags, configs) # get masks
-
-    if res['status']==-1:
+    # print('starting')
+    img = cv2.imread(img_path)
+    res = get_masks(img, general_model, image_model, flags, configs)
+    if res['status']==-1: #### aisludfhhwriuehh eeerrore. SBAGLIATO=-1
         for idx in configs.keys():
             configs[idx]['rm'] = False
-        return evaluate(img, model, img_model, flags, configs)
+        return evaluate(img_path, model, img_model, configs, flags)
     else:
         masks = res['masks']
     
     color_map = {
-        0 : (255, 0, 0), # R -> images
-        1 : (0, 255, 0), # G -> titles, captions (isolated texts)
-        2 : (0, 0, 255), # B -> text
-        3 : (255, 255, 0), # Y -> ?
+        0 : (255, 0, 0),
+        1 : (0, 255, 0),
+        2 : (0, 0, 255),
+        3 : (255, 255, 0),
     }
     for i, mask in enumerate(masks):
         img = overlay(image=img, mask=mask, color=color_map[i], alpha=0.4)
     # print('finishing')
     return img
 
-def collect_results(path, filename):
-    output = evaluate(img_path=path, model=general_model, img_model=image_model,\
-          configs=configs, flags=flags)
-    
-    # remember that pixels are counted from the top left corner
-    # notice that the UoM is pixels for both coordinates and area
-    dresults = {}
-    dresults['images'] = {}
+if __name__ == "__main__":
 
-    plt.imshow(output)
+    image_path = 'examples'
+    sample_name = ['0040da34-25c8-4a5a-a6aa-36733ea3b8eb.png',
+                '0050a8ee-382b-447e-9c5b-8506d9507bef.png', '0064d3e2-3ba2-4332-a28f-3a165f2b84b1.png']
 
-    for i, bb in enumerate(bounding_boxes):
-        dresults['images'][str(i)] = {}
-        dresults['images'][str(i)]['top_left'] = (bb[0].item(), bb[1].item())
-        dresults['images'][str(i)]['top_right'] = (bb[2].item(), bb[1].item())
-        dresults['images'][str(i)]['bottom_left'] = (bb[2].item(), bb[3].item())
-        dresults['images'][str(i)]['bottom_right'] = (bb[0].item(), bb[3].item())
-        dresults['images'][str(i)]['center'] = (bb[0].item()+(bb[2].item()-bb[0].item())/2, bb[1].item()+(bb[3].item()-bb[1].item())/2)
-        dresults['images'][str(i)]['area'] = (bb[2].item()-bb[0].item())*(bb[3].item()-bb[1].item())
-        
-        a = "+"
-        plt.text(bb[0]+(bb[2]-bb[0])/2, bb[1]+(bb[3]-bb[1])/2, str(i), fontsize=20, color='white', weight='bold')
-        plt.plot(bb[0], bb[1], a, color="white",markersize=5)
-        plt.plot(bb[0], bb[3], a, color="white",markersize=5)
-        plt.plot(bb[2], bb[3], a, color="white",markersize=5)
-        plt.plot(bb[2], bb[1], a, color="white",markersize=5)
-        plt.plot(bb[0]+(bb[2]-bb[0])/2, bb[1]+(bb[3]-bb[1])/2, "+", color="white",markersize=5)
+    sample_path = [os.path.join(image_path, sample) for sample in sample_name]
+ 
+    # image_path = '/home/rocco/dev/dh/periodical-segmentation/data/corpora/corpus/'
+    # sample_path3 = 'Donna_5.JPG'
 
-        json_object = json.dumps(dresults, indent=4)
-        with open(f"results/data/{filename}.json", "w") as outfile:
-            outfile.write(json_object)
-        
-    plt.axis('off')
-    plt.savefig(f"results/annotated_images/{filename}")
-    # plt.show()
+    # iterate among pages in the corpus
+    image_path = '/home/rocco/dev/dh/periodical-segmentation/data/corpora/corpus/'
+    for filename in os.listdir(image_path):
+        f = os.path.join(image_path, filename)
 
-# iterate among pages in the corpus
-directory = 'corpora/corpus'
-for filename in os.listdir(directory):
-    f = os.path.join(directory, filename)
-    collect_results(f, filename)
+        output = evaluate(img_path=f, model=general_model, img_model=image_model,\
+            configs=configs, flags=flags)
 
-# # ------------------------------- application -------------------------------
-# inputs_image = [
-#     gr.components.Image(type="filepath", label="Input Image"),
-# ]
-# outputs_image = [
-#     gr.components.Image(type="numpy", label="Output Image"),
-# ]
-# interface_image = gr.Interface(
-#     fn=evaluate,
-#     inputs=inputs_image,
-#     outputs=outputs_image,
-#     title="MARTA IMAGINATOR MACHINE",
-#     examples=sample_path,
-#     cache_examples=True,
-# ).launch()
+        try:
+            out_dir = os.path.join(image_path, 'annotated')
+            os.makedirs(out_dir, exist_ok=True)
+            name, ext = os.path.splitext(filename)
+            out_name = f"{name}_annotated{ext}"
+            out_path = os.path.join(out_dir, out_name)
+            cv2.imwrite(out_path, output)
+            print(f"Saved annotated image to {out_path}")
+        except Exception:
+            out_path = 'output.png'
+            cv2.imwrite(out_path, output)
+            print(f"Saved output to {out_path}")
+
