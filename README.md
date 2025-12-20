@@ -22,7 +22,7 @@ TODO:
 - marta lancia i test
   
 TODO - FIRST PART:  
-(- insert "stop images" > do not consider the library mark > not really necessaryr
+- (insert "stop images" > do not consider the library mark > not really necessary)
 - (MARTA) export single .jpg images from the .pdf file downloaded from the library website
 - tell the app to calculate: IMAGES BB NUMBER, IMAGES BB DIMENSION (area), IMAGES BB POSITION (baricentro?), IMAGES BB PERCENTAGE of space occupied within each page (so need to calcutare also the total area of the page, that could be ≠ from the total area of the digitisation, that often includes extra margins)
 - correct the app and verify that the app correcly annotates images (review problem found with the number of bounding boxes)  
