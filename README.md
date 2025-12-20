@@ -7,7 +7,7 @@ Links:
 - [OD sharepoint](https://usi365-my.sharepoint.com/personal/pizzam_usi_ch/_layouts/15/onedrive.aspx?CT=1764095526506&OR=OWA%2DNT%2DMail&CID=61e0ce3a%2D57fd%2D180b%2D9963%2D0092f13a5648&e=5%3A2f7d7c388f494d83adff3c7d38efb360&sharingv2=true&fromShare=true&at=9&clickParams=eyJYLUFwcE5hbWUiOiJNaWNyb3NvZnQgT3V0bG9vayBXZWIgQXBwIiwiWC1BcHBWZXJzaW9uIjoiMjAyNTExMTQwMDEuMTkiLCJPUyI6IkxpbnV4IHVuZGVmaW5lZCJ9&cidOR=Client&id=%2Fpersonal%2Fpizzam%5Fusi%5Fch%2FDocuments%2FDH%2FAPP%20ROCCO%20per%20dimensioni&FolderCTID=0x012000C74763D84F24FF449C0725411796B65E&view=0)
  
 PERIODICALS:  
-- La donna (1905-1916) > Emeroteca Roma > downloaded 1906- > NB digitised as single pages
+- La donna (1905-1916) > Emeroteca Roma (1906-1910, 1913-1914, 1916) > downloaded 1906- > NB digitised as single pages
 - La Lettura (1901-1916) > Digiteca Braidense > downloaded 1901-1916 > NB digitised as double pages
 - L'illustrazione italiana (start-1916) > BiASA (don't know how to download from there)
 - L'Esposizione di Torino (1911) > Turin 1911 Project (don't know how to download from there)
@@ -22,8 +22,8 @@ TODO:
 - marta lancia i test
   
 TODO - FIRST PART:  
-- insert "stop images" > do not consider the library mark
-- export single .jpg images from the .pdf file downloaded from the library website > Marta handmade
+(- insert "stop images" > do not consider the library mark > not really necessaryr
+- (MARTA) export single .jpg images from the .pdf file downloaded from the library website
 - tell the app to calculate: IMAGES BB NUMBER, IMAGES BB DIMENSION (area), IMAGES BB POSITION (baricentro?), IMAGES BB PERCENTAGE of space occupied within each page (so need to calcutare also the total area of the page, that could be ≠ from the total area of the digitisation, that often includes extra margins)
 - correct the app and verify that the app correcly annotates images (review problem found with the number of bounding boxes)  
   
