@@ -24,16 +24,17 @@ TODO:
 TODO - FIRST PART:  
 - (insert "stop images" > do not consider the library mark > not really necessary)
 - (MARTA) export single .jpg images from the .pdf file downloaded from the library website
-- tell the app to calculate: IMAGES BB NUMBER, IMAGES BB DIMENSION (area), IMAGES BB POSITION (baricentro?), IMAGES BB PERCENTAGE of space occupied within each page (so need to calcutare also the total area of the page, that could be ≠ from the total area of the digitisation, that often includes extra margins)
-- correct the app and verify that the app correcly annotates images (review problem found with the number of bounding boxes)  
+- tell Rocco to calculate: IMAGES BB NUMBER, IMAGES BB DIMENSION (area), IMAGES BB POSITION (baricentro?), IMAGES BB PERCENTAGE of space occupied within each page (so need to calcutare also the total area of the page, that could be ≠ from the total area of the digitisation, that often includes extra margins)
+- verify images annotations (review problem found with the number of bounding boxes?)  
   
 TODO - SECOND PART:  
-- AFTER THAT the first part is correctly working, tell the app to put the noted images in a Cartesian plane, where: x-axis = n. images on the page; y-axis = space % occupied by images
+- AFTER THAT the first part is correctly working, put the noted images in a Cartesian plane, where: x-axis = n. images on the page; y-axis = space % occupied by images
 - reflect on other possible parameters to be considered: ex. data of publication (year and/or month), image position on the page
 - do one different cartesian plane for each issue/year of the periodical (for comparing them)?  
   
 OTHER (MAYBE) USEFUL MODELS  
 - test [SAM](https://github.com/facebookresearch/sam3)
+- test Observable
 
 NOTES:
 - models from https://huggingface.co/spaces/atlury/yolo-document-layout-analysis/tree/main
