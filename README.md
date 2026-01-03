@@ -39,3 +39,10 @@ OTHER (MAYBE) USEFUL MODELS
 
 NOTES:
 - models from https://huggingface.co/spaces/atlury/yolo-document-layout-analysis/tree/main
+
+PLOT STRUCTURE:
+- pagina
+    - journal name (to be extracted JournalName_Year_PageId)
+    - year (to be extracted NomeGiornale_Anno)
+    - absolute n. of images
+    - percentage of space occupied by images

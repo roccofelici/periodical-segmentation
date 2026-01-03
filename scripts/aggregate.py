@@ -4,6 +4,7 @@ import json
 from bokeh.models import ColumnDataSource
 from bokeh.plotting import figure, show
 from PIL import Image
+import csv
 
 def get_total_area(name):
     """Return the area (width*height) of the first image found for `name`.
@@ -71,14 +72,33 @@ else:
 
 x = [] # number of images
 y = [] # percentage of space occupied by images
- 
-if box_data:
-    for file_name, indexed_data in box_data.items():
-        print(file_name)
-        print(get_total_area(file_name))
-        print(percentage_image_area(file_name, indexed_data))
-        # print(count_images)
-        # break
+
+
+csv_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data/results_summary.csv')
+with open(csv_path, 'w', newline='') as csvfile:
+    writer = csv.writer(csvfile)
+    writer.writerow(['filename', 'year', 'image_count', 'percentage_image_area'])
+
+    if box_data:
+        for file_name, indexed_data in box_data.items():
+            print(file_name.replace('.jpg',''))
+            print(1908) # TO DO: extract from the name
+            print(count_images(indexed_data))
+            # print(get_total_area(file_name))
+            print(percentage_image_area(file_name, indexed_data))
+
+            # - journal name (to be extracted JournalName_Year_PageId)
+            # - year (to be extracted NomeGiornale_Anno)
+            # - absolute n. of images
+            # - percentage of space occupied by images
+
+            writer.writerow([
+                file_name, 
+                1908, 
+                count_images(indexed_data), 
+                percentage_image_area(file_name, indexed_data)
+                ])
+
 
 
 # data viz
