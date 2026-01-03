@@ -35,6 +35,7 @@ TODO - SECOND PART:
 OTHER (MAYBE) USEFUL MODELS  
 - test [SAM](https://github.com/facebookresearch/sam3)
 - test Observable
+- test Flourish
 
 NOTES:
 - models from https://huggingface.co/spaces/atlury/yolo-document-layout-analysis/tree/main
