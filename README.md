@@ -21,22 +21,20 @@ PERIODICALS:
 - Numero
   
 ### TODO
+- push some data on git: examples, segmentation, sets. Leave out only big files @rocco
 - check no _Image... is present in the name of any file in the corpora @marta
 - check no .jpg/.png id present in the name of any folder in the corpora @marta
 - git for models and images: [Git LFS](https://docs.github.com/en/repositories/working-with-files/managing-large-files/configuring-git-large-file-storage)
-- marta lancia i test
-- add data on OneDrive
-
-TODO - FIRST PART:  
-- (insert "stop images" > do not consider the library mark > not really necessary)
-- (MARTA) export single .jpg images from the .pdf file downloaded from the library website
-- tell Rocco to calculate: IMAGES BB NUMBER, IMAGES BB DIMENSION (area), IMAGES BB POSITION (baricentro?), IMAGES BB PERCENTAGE of space occupied within each page (so need to calcutare also the total area of the page, that could be ≠ from the total area of the digitisation, that often includes extra margins)
-- verify images annotations (review problem found with the number of bounding boxes?)  
-  
-TODO - SECOND PART:  
-- AFTER THAT the first part is correctly working, put the noted images in a Cartesian plane, where: x-axis = n. images on the page; y-axis = space % occupied by images
-- reflect on other possible parameters to be considered: ex. data of publication (year and/or month), image position on the page
-- do one different cartesian plane for each issue/year of the periodical (for comparing them)?  
+- test instruction to run programs @marta
+- add all data on OneDrive @rocco
+- (insert "stop images" > do not consider the library mark > not really necessary) @marta ???
+- export single .jpg images from the .pdf file downloaded from the library website @marta
+- ~IMAGES BB NUMBER, IMAGES BB DIMENSION (area), IMAGES BB POSITION (baricentro?), IMAGES BB PERCENTAGE of space occupied within each page (so need to calcutare also the total area of the page, that could be ≠ from the total area of the digitisation, that often includes extra margins) @rocco~
+- verify images annotations (review problem found with the number of bounding boxes?) @marta
+- put the noted images in a Cartesian plane, where: x-axis = n. images on the page; y-axis = space % occupied by images @rocco
+- reflect on other possible parameters to be considered: ex. data of publication (year and/or month), image position on the page @marta
+- do one different cartesian plane for each issue/year of the periodical (for comparing them)? @marta
+- use SAM3 to correct wronng annotations @marta @rocco
   
 OTHER (MAYBE) USEFUL STUFF  
 - test [SAM](https://github.com/facebookresearch/sam3)
