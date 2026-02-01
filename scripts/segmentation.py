@@ -1,7 +1,16 @@
 #!/usr/bin/env python3
+'''
+Segment pages for:
+
+- texts
+- titles
+- images
+'''
 import torch
 import os
 import cv2
+import sys
+import json
 import numpy                as np
 import matplotlib.pyplot    as plt
 import numpy                as np
@@ -9,7 +18,6 @@ from ultralytics        import YOLO
 from skimage.transform  import resize
 from skimage            import img_as_bool
 from skimage.morphology import convex_hull_image
-import json
 
 SHOW = False
 
@@ -179,7 +187,8 @@ def evaluate(
         model, # =general_model
         img_model, # =image_model
         configs, # =configs
-        flags # =flags
+        flags, # =flags
+        json_path
         ):
     
     img = cv2.imread(img_path)
@@ -190,7 +199,7 @@ def evaluate(
     if res['status']==-1:
         for idx in configs.keys():
             configs[idx]['rm'] = False
-        return evaluate(img_path, model, img_model, configs, flags)
+        return evaluate(img_path, model, img_model, configs, flags, json_path)
     else:
         masks = res['masks']
         boxes = res['boxes']
@@ -245,7 +254,6 @@ def evaluate(
         cv2.putText(img, str(i), (int((box[0] + box[2]) / 2), int((box[1] + box[3]) / 2)), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (255, 255, 255), 2, cv2.LINE_AA)
     
     # save in json without overwrite -------------------------------------------
-    json_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data/results.json')
     if os.path.exists(json_path):
         with open(json_path, 'r') as jf:
             try:
@@ -307,8 +315,22 @@ def collect_results(output, boxes, filename):
 
 if __name__ == "__main__":
 
+    if len(sys.argv) > 1:
+        PATH = sys.argv[1] # relative path to the folder e.g. data/LetturaSportiva_1912_giu-lug
+        NAME = PATH.replace('data/','')
+    else:
+        # NOTE: change the folder to annotate
+        NAME = 'CorriereDeiPiccoli_1908-1909-1910-1913-1916'
+    
+        # PATH = f'data/final/{NAME}/{NAME}'
+        PATH = f'data/final/{NAME}/{NAME}'
+
     # load results
-    json_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data/results.json')
+    # json_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data/results.json')
+    json_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), f'data/{NAME}_segmentation_results.json')
+
+    print(f'json path: {json_path}')
+
     if os.path.exists(json_path):
         with open(json_path, 'r') as json_file:
             box_data = json.load(json_file)
@@ -350,19 +372,22 @@ if __name__ == "__main__":
     }
 
     # iterate among pages in the corpus
-    image_path = os.path.join(dirname, 'data/corpora/corpus/')
+    # image_path = os.path.join(dirname, f'data/corpora/corpus/')
+
+    image_path = os.path.join(dirname, f'{PATH}')
+
     for filename in os.listdir(image_path):
 
         print(f'prep {filename}')
         f = os.path.join(image_path, filename)
 
         output, boxes = evaluate(img_path=f, model=general_model, img_model=image_model,\
-            configs=configs, flags=flags)
+            configs=configs, flags=flags, json_path=json_path)
 
         collect_results(output, boxes, filename)
 
         try:
-            out_dir = os.path.join(os.path.dirname(image_path), 'annotated')
+            out_dir = os.path.join(os.path.dirname(image_path), f'{NAME}_annotated')
             os.makedirs(out_dir, exist_ok=True)
             name, ext = os.path.splitext(filename)
             out_name = f"{name}_annotated{ext}"
