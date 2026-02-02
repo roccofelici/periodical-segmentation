@@ -34,6 +34,8 @@ PERIODICALS:
 - use [SAM3](https://github.com/facebookresearch/sam3) to correct wronng annotations @marta @rocco
 
 @rocco
+- check all data on flourish
+- viz annotated images on flourish
 - push some data on git: examples, segmentation, sets. Leave out only big files
 - git for models and images: [Git LFS](https://docs.github.com/en/repositories/working-with-files/managing-large-files/configuring-git-large-file-storage) 
 - add all data on OneDrive @rocco
