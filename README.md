@@ -21,25 +21,24 @@ PERIODICALS:
 - Numero
   
 ### TODO
-- push some data on git: examples, segmentation, sets. Leave out only big files @rocco
-- check no _Image... is present in the name of any file in the corpora @marta
-- check no .jpg/.png id present in the name of any folder in the corpora @marta
-- git for models and images: [Git LFS](https://docs.github.com/en/repositories/working-with-files/managing-large-files/configuring-git-large-file-storage)
-- test instruction to run programs @marta
+
+@marta
+- check no _Image... is present in the name of any file in the corpora 
+- check no .jpg/.png id present in the name of any folder in the corpora 
+- test instruction to run programs on small datasets 
+- (insert "stop images" > do not consider the library mark > not really necessary)  ???
+- export single .jpg images from the .pdf file downloaded from the library website 
+- verify images annotations (review problem found with the number of bounding boxes?) 
+- reflect on other possible parameters to be considered: ex. data of publication (year and/or month), image position on the page 
+- do one different cartesian plane for each issue/year of the periodical (for comparing them)? 
+- use [SAM3](https://github.com/facebookresearch/sam3) to correct wronng annotations @marta @rocco
+
+@rocco
+- push some data on git: examples, segmentation, sets. Leave out only big files
+- git for models and images: [Git LFS](https://docs.github.com/en/repositories/working-with-files/managing-large-files/configuring-git-large-file-storage) 
 - add all data on OneDrive @rocco
-- (insert "stop images" > do not consider the library mark > not really necessary) @marta ???
-- export single .jpg images from the .pdf file downloaded from the library website @marta
-- ~IMAGES BB NUMBER, IMAGES BB DIMENSION (area), IMAGES BB POSITION (baricentro?), IMAGES BB PERCENTAGE of space occupied within each page (so need to calcutare also the total area of the page, that could be ≠ from the total area of the digitisation, that often includes extra margins) @rocco~
-- verify images annotations (review problem found with the number of bounding boxes?) @marta
-- put the noted images in a Cartesian plane, where: x-axis = n. images on the page; y-axis = space % occupied by images @rocco
-- reflect on other possible parameters to be considered: ex. data of publication (year and/or month), image position on the page @marta
-- do one different cartesian plane for each issue/year of the periodical (for comparing them)? @marta
-- use SAM3 to correct wronng annotations @marta @rocco
-  
-OTHER (MAYBE) USEFUL STUFF  
-- test [SAM](https://github.com/facebookresearch/sam3)
-- ~~test Observable~~
-- ~~test Flourish~~
+- ~IMAGES BB NUMBER, IMAGES BB DIMENSION (area), IMAGES BB POSITION (baricentro?), IMAGES BB PERCENTAGE of space occupied within each page (so need to calcutare also the total area of the page, that could be ≠ from the total area of the digitisation, that often includes extra margins)~
+- put the noted images in a Cartesian plane, where: x-axis = n. images on the page; y-axis = space % occupied by images
 
 ### Notes
 - [tool](https://pixspy.com/) to hover with cursor on images and check pixels coordinates.
@@ -77,8 +76,7 @@ e.g.:
 python scripts/aggregate.py data/LetturaSportiva_1912_giu-lug_segmentation_results.json
 ```
 
-
-### To explore a dataset
+### To create a parquet dataset
 - Navigate to /notebook
 - Change the name of the dataset to explore in the first code block
 - _"play"_ all blocks
