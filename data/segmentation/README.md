@@ -1,1 +1,1 @@
-#segmented images
+#periodicals segmented images: Lettura Sportiva
