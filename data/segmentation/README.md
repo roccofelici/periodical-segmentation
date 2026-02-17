@@ -1,1 +1,3 @@
-#periodicals segmented images: «Lettura Sportiva» (1912, nn. 24-28), «Bianco, rosso e verde» (1915, nn. 1, 3; 1916, nn. 1-3), «La grande illustrazione» (1914, nn. 2, 5)
+version https://git-lfs.github.com/spec/v1
+oid sha256:05dee612247a06fb88a6ad9f97c932536038ef5fad9fc69370dadadb9ca17a99
+size 175
