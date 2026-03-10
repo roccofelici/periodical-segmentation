@@ -56,13 +56,13 @@ python scripts/segmentation.py data/PeriodicName_Year_Id
 ```
 e.g.:
 ```bash
-python scripts/segmentation.py data/LetturaSportiva_1912_giu-lug
+python scripts/segmentation.py data/GrIll_1914_feb,mag_PNGdoublepage
 ```
 
 ### To aggregate data
 e.g.:
 ```bash
-python scripts/aggregate.py data/LetturaSportiva_1912_giu-lug_segmentation_results.json
+python scripts/aggregate.py data/GrIll_1914_feb,mag_PNGdoublepage_segmentation_results.json 
 ```
 
 ### To create a parquet dataset
