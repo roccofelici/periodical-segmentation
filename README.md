@@ -25,9 +25,9 @@ PERIODICALS:
 - use [SAM3](https://github.com/facebookresearch/sam3) to correct wrong annotations @marta @rocco
 
 @rocco
-- viz annotated images on flourish
-- push some data on git: examples, segmentation, sets. Leave out only big files
-- git for models and images: [Git LFS](https://docs.github.com/en/repositories/working-with-files/managing-large-files/configuring-git-large-file-storage) 
+- ~viz annotated images on flourish~
+- ~push some data on git: examples, segmentation, sets. Leave out only big files~
+- ~git for models and images: [Git LFS](https://docs.github.com/en/repositories/working-with-files/managing-large-files/configuring-git-large-file-storage)~
 - ~IMAGES BB NUMBER, IMAGES BB DIMENSION (area), IMAGES BB POSITION (baricentro?), IMAGES BB PERCENTAGE of space occupied within each page (so need to calcutare also the total area of the page, that could be ≠ from the total area of the digitisation, that often includes extra margins)~
 
 ### Notes
