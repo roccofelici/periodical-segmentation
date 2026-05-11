@@ -9,12 +9,13 @@ We intend to study this on a selected dataset which includes several early 20th-
 
 ### Corpus
 
-PERIODICALS:  
-- La donna (1905-1916) > Emeroteca Roma (1906-1910, 1913-1914, 1916) > NB digitised as single pages
-- La Lettura (1901-1916) > Digiteca Braidense > NB digitised as double pages
-- Bianco, rosso e verde (1915-1916) > Biblioteca Braidense > NB digitised as double pages
-- Il corriere dei piccoli (1909-1916) > Digiteca - Biblioteca di Storia Moderna e Contemporanea > NB digitised as single pages
-- La grande illustrazione (1914-1915) > Biblioteca APICE > NB digitised as double pages
+PERIODICALS (20'022 total pp.):  
+- La Donna (1905-1916) > Emeroteca Roma (1906-1910, 1913-1914, 1916) > NB digitised as single pages, 5548pp.
+- La Lettura (1901-1916) > Digiteca Braidense > NB digitised as double pages, 9941pp.
+- Bianco, Rosso e Verde (1915-1916) > Biblioteca Braidense > NB digitised as double pages, 285pp., fully digitised
+- Corriere dei Piccoli (1909-1916) > Digiteca - Biblioteca di Storia Moderna e Contemporanea > NB digitised as single pages, 3817pp.
+- La Grande Illustrazione (1914-1915) > Biblioteca APICE > NB digitised as double pages, 389pp., fully digitised
+- Lettura Sportiva (1912) > Biblioteca Braidense > NB digitised as double pages, 42pp.
   
 ### TODO
 
