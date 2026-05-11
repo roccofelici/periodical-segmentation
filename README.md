@@ -11,13 +11,10 @@ We intend to study this on a selected dataset which includes several early 20th-
 
 PERIODICALS:  
 - La donna (1905-1916) > Emeroteca Roma (1906-1910, 1913-1914, 1916) > NB digitised as single pages
-- La Lettura (1901-1916) > Digiteca Braidense > downloaded 1901-1916 > NB digitised as double pages
-- L'illustrazione italiana (start-1916) > BiASA (don't know how to download from there)
-- L'Esposizione di Torino (1911) > Turin 1911 Project (don't know how to download from there)
-- Adolescenza (start-1916) > still to be digitised
-- Bianco, rosso e verde (1915-1916) > NB digitised as double pages
-- Il corriere dei piccoli (1909-1916) > NB digitised as single pages
-- La grande illustrazione (1914)
+- La Lettura (1901-1916) > Digiteca Braidense > NB digitised as double pages
+- Bianco, rosso e verde (1915-1916) > Biblioteca Braidense > NB digitised as double pages
+- Il corriere dei piccoli (1909-1916) > Digiteca - Biblioteca di Storia Moderna e Contemporanea > NB digitised as single pages
+- La grande illustrazione (1914-1915) > Biblioteca APICE > NB digitised as double pages
   
 ### TODO
 
@@ -25,10 +22,8 @@ PERIODICALS:
 - use [SAM3](https://github.com/facebookresearch/sam3) to correct wrong annotations @marta @rocco
 
 @rocco
-- ~viz annotated images on flourish~
-- ~push some data on git: examples, segmentation, sets. Leave out only big files~
 - ~git for models and images: [Git LFS](https://docs.github.com/en/repositories/working-with-files/managing-large-files/configuring-git-large-file-storage)~
-- ~IMAGES BB NUMBER, IMAGES BB DIMENSION (area), IMAGES BB POSITION (baricentro?), IMAGES BB PERCENTAGE of space occupied within each page (so need to calcutare also the total area of the page, that could be ≠ from the total area of the digitisation, that often includes extra margins)~
+- ~IMAGES BB NUMBER, IMAGES BB DIMENSION (area), IMAGES BB POSITION (baricentro?), IMAGES BB PERCENTAGE of space occupied within each page~
 
 ### Notes
 - [tool](https://pixspy.com/) to hover with cursor on images and check pixels coordinates.
